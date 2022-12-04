@@ -1,0 +1,277 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --bg-blue: hsl(218, 17%, 62%);
+  --light-purple: hsl(275, 18%, 79%);
+  --light-pink: hsl(312, 91%, 96%);
+  --bg-body: hsl(233, 100%, 97%);
+
+  --ff-heading: "Staatliches", sans-serif;
+  --ff-body: "Palanquin", sans-serif;
+
+  --fc-primary: #ffffff;
+  --fc-secondary: #23053a;
+  --fc-tertiary: #4a4e69;
+
+  --fs-heading: 4rem;
+  --fs-body: 2rem;
+}
+
+body {
+  background-color: var(--bg-body);
+
+  font-family: var(--ff-body);
+  font-size: var(--fs-body);
+
+  text-align: center;
+}
+
+header {
+  margin-bottom: 6rem;
+}
+
+header .mobile-bg {
+  background-color: var(--bg-blue);
+
+  margin-bottom: 1.4rem;
+
+  padding-top: 3.2rem;
+  padding-bottom: 2.9rem;
+}
+
+header h1 {
+  background-color: var(--light-purple);
+
+  padding-block: 0.8rem;
+
+  margin-top: 3.2rem;
+
+  font-family: var(--ff-heading);
+  font-size: var(--fs-heading);
+  letter-spacing: 0.05em;
+  line-height: 85%;
+
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+
+  color: var(--fc-primary);
+}
+
+header p {
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 2.5rem;
+
+  color: var(--fc-secondary);
+}
+
+p {
+  margin-inline: auto;
+  max-width: 32rem;
+}
+
+#cards {
+  animation: downTop 0.7s forwards;
+  opacity: 0;
+
+  display: grid;
+  gap: 3.2rem;
+}
+
+#cards .card {
+  width: fit-content;
+  position: relative;
+  transition: 0.15s ease-out;
+  margin: auto;
+}
+
+#cards .card img {
+  object-fit: cover;
+
+  border-radius: 2rem;
+
+  filter: blur(0.5px) brightness(0.9);
+  transition: 0.15s ease-out;
+}
+
+#cards .card:hover {
+  transform: scale(1.05);
+}
+
+#cards .card:hover img {
+  filter: blur(0);
+}
+
+#cards .card h2 {
+  animation: topDown 0.7s forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+
+  width: fit-content;
+
+  background-color: var(--light-pink);
+
+  border-radius: 2rem;
+
+  padding-inline: 2.4rem;
+
+  font-family: var(--ff-heading);
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 3.4rem;
+
+  letter-spacing: 0.05em;
+
+  color: var(--fc-tertiary);
+
+  position: absolute;
+  z-index: 10;
+  top: 1.6rem;
+  right: 1.6rem;
+}
+
+footer {
+  font-weight: 400;
+  line-height: 2.8rem;
+
+  color: var(--fc-tertiary);
+
+  margin-block: 5rem;
+}
+
+footer a {
+  color: var(--fc-tertiary);
+  text-decoration: none;
+}
+
+@keyframes downTop {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes topDown {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* RESPONSIVE */
+@media screen and (min-width: 663px) {
+  #cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  p {
+    max-width: 50rem;
+  }
+
+  #cards .card:nth-child(1) img,
+  #cards .card:nth-child(3) img,
+  #cards .card:nth-child(5) img {
+    width: 220px;
+    height: 350px;
+  }
+}
+
+@media screen and (min-width: 902px) {
+  #cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+  }
+
+  p {
+    max-width: 70rem;
+  }
+
+  #cards .card:nth-child(1) img,
+  #cards .card:nth-child(3) img,
+  #cards .card:nth-child(5) img {
+    width: 220px;
+    height: 350px;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .app {
+    display: flex;
+
+    width: 100%;
+  }
+
+  header {
+    background: var(--bg-blue);
+
+    width: 37.7rem;
+    height: 100vh;
+    margin-bottom: 0;
+  }
+
+  header p {
+    color: var(--fc-primary);
+
+    max-width: 35rem;
+  }
+
+  .box {
+    margin: 6.4rem auto 0;
+  }
+
+  #cards {
+    grid-template-columns: auto;
+    grid-template-areas:
+      "A B C"
+      "D B F"
+      "D E F";
+    gap: 3.2rem;
+  }
+
+  #cards .card:nth-child(1) {
+    grid-area: A;
+  }
+  #cards .card:nth-child(2) {
+    grid-area: B;
+  }
+  #cards .card:nth-child(3) {
+    grid-area: C;
+  }
+  #cards .card:nth-child(4) {
+    grid-area: D;
+  }
+  #cards .card:nth-child(5) {
+    grid-area: E;
+  }
+  #cards .card:nth-child(6) {
+    grid-area: F;
+  }
+
+  #cards .card:nth-child(1) img,
+  #cards .card:nth-child(3) img,
+  #cards .card:nth-child(5) img {
+    width: 100%;
+    height: 100%;
+  }
+
+  footer {
+    margin: 0;
+    padding-top: 5rem;
+  }
+}
